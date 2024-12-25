@@ -49,3 +49,4 @@
 
 #### 검색어 삭제
 ![최근 검색어 삭제](https://github.com/user-attachments/assets/fc73bbc6-34ba-483a-844b-c7ac4fbc9673)
+
