@@ -4,6 +4,8 @@ import SearchForm from "./components/SearchForm";
 import SearchResult from "./components/SearchResult";
 import store from "./Store.jsx";
 import Tabs, { TabType } from "./components/Tabs.jsx";
+import KeywordList from "./components/KeywordList.jsx";
+import HistoryList from "./components/HistoryList.jsx";
 
 function App () {
     const [searchKeyword, setSearchKeyword] = useState("")
@@ -25,7 +27,8 @@ function App () {
 
     const search = (searchKeyword) => {
         const searchResult = store.search(searchKeyword)
-
+        
+        setSearchKeyword(searchKeyword)
         setsearchResult(searchResult)
         setsubmitted(true)
     }
@@ -51,13 +54,15 @@ function App () {
                     {submitted ? 
                         <SearchResult data={searchResult}/>
                          : 
-                        <Tabs
-                            selectedTab={selectedTab}
-                            onChange={(selectedTab) => setSelectedTab(selectedTab)}
-                        />
+                        <>
+                            <Tabs
+                                selectedTab={selectedTab}
+                                onChange={(selectedTab) => setSelectedTab(selectedTab)}
+                            />
+                            {selectedTab === TabType.KEYWORD && <KeywordList onClick={(keyword) => search(keyword)}/>}
+                            {selectedTab === TabType.HISTORY && <HistoryList onClick={(keyword) => search(keyword)}/>}
+                        </>
                     }
-                    {selectedTab === TabType.KEYWORD && <>TODO: 추천검색어 목록</>}
-                    {selectedTab === TabType.HISTORY && <>TODO: 최근검색어 목록</>}
                 </div>
 
             </div>

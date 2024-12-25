@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { formatRelativeDate } from "./js/helpers.js";
 import store from "./js/Store.js";
 
@@ -11,6 +12,9 @@ const TabLabel = {
   [TabType.HISTORY] : "최근 검색어",
 }
 
+
+
+
 function App () {
   const [searchKeyWord, setSearchKeyWord] = React.useState("")
   const [searchResult, setSearchResult] = React.useState([])
@@ -18,6 +22,7 @@ function App () {
   const [selectedTab, setSelectedTab] = React.useState(TabType.KEYWORD)
   const [keywordList, setKeywordList] = React.useState([]);
   const [historyList, setHistoryList] = React.useState([]);
+
   
   // 컴포넌트 초기화 시 추천 검색어와 검색 기록을 store에서 불러옴
   // 컴포넌트가 처음 마운트될 때만 실행
